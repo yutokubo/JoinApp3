@@ -1,0 +1,56 @@
+
+  <table class="table table-bordered" height="150", width="700">
+      <th colspan="4", style="text-align:center;">プロフィール</th> 
+    <tr>
+      <td>
+      <%= image_tag @user.profile_image.url unless @user.profile_image.nil? %>
+      </td>
+      
+      <td class="v-align">
+      <%= @user.username %> 
+      </td> 
+      
+      <td width="400">
+      <%= safe_join(@user.profile.split("\n"),tag(:br))%>
+      </td>
+
+      <td class="v-align">
+      <%= link_to "編集", edit_user_path(@user), class: "b-edit" %>
+      </td>
+    </tr>
+  </table>
+
+
+<style>
+img {
+  width: 120px;
+  height:120px;
+  border-radius: 50%;
+  
+   
+}
+
+.table {
+  width: 50%;
+  margin: auto;
+  margin-top: 200px;
+  background-color: white;
+}
+
+table .v-align {
+  vertical-align:middle;
+}
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+

@@ -1,0 +1,136 @@
+  <head>
+    <title>JoinApp3</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+     
+  </head>
+
+<body>
+
+    <%if flash[:notice]%>
+      <div>
+        <p class="notice"><%= notice %></p>
+      </div>
+    <%end%>
+
+
+    <%if flash[:alert]%>
+      <div>
+        <p class="alert"><%= alert %></p>
+      </div>
+    <%end%>
+   
+  <header class="c-header"> 
+    <div class="logo">
+      <%= link_to 'JSPORT', root_path, class: "p-absolute"%>
+    </div>
+
+
+    
+    
+      <div class="dropdown dropleft">
+        <button class="btn btn-secondary dropdown-toggle　" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="material-icons">
+        account_circle
+        </span>  
+        </button>
+
+
+
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <% if user_signed_in? %>
+            <%= link_to "TOP" ,root_path ,class:"dropdown-item " %>
+            <%= link_to "コミュニティを作成", new_community_path(id: current_user),class:"dropdown-item " %>
+            <%= link_to  "プロフィール" ,profile_mypage_path(id: current_user),class:"dropdown-item "  %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class:"dropdown-item " %>
+        <div>
+      </div>
+          <%else%>
+            <div class="before_contents">
+              <%= link_to "ログイン", new_user_session_path %>
+              <%= link_to "新規登録", new_user_registration_path %>
+            </div>
+          <%end%>   
+  </header>
+
+
+  <footer class="footer">
+  </footer>
+
+<%= yield %>
+  <!-- jQuery読み込み -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <!-- PopperのJS読み込み -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <!-- BootstrapのJS読み込み -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  
+  </body>
+
+
+
+
+
+<style>
+
+  body {
+    background-color: #A9A9A9;
+    
+  }
+ 
+  .join {
+    background-color: #00CCFF;
+
+    }
+
+  .c-header {
+    display: flex;
+    height: 60px;
+    background-color: #08AEEA;
+    background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.4); 
+    justify-content: space-between;
+    align-items: center;
+    
+  
+  }
+
+  .p-absolute {
+    
+    font-size:30px;
+    padding: 10px;
+    color: white;
+  }
+
+  .dropdown {
+    padding-right:10px;
+    
+  }
+
+ 
+/* 
+.footer {
+  position: absolute;
+  width: 100%;
+
+  height: 60px;
+  background: #fff;
+  color: #000;
+  margin-top: auto;
+
+ 
+} */
+
+
+</style>
+
+
+
+

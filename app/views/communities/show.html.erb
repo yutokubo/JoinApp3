@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="row c-padding">
+
+    <div class="col">
+      <div class="content-image">
+        <%= image_tag @community.image.url, :style => "width: 300px; height: 300;",class:"image" %>
+      </div>
+    </div>
+   
+      <div class="card mb-4 shadow-sm" style="width: 40rem;">
+        <div class="t-content">
+          <div class="content-title">
+            <%= @community.title %>
+          </div>
+          <div class="b-tto">
+              <div class="button">
+                <%= link_to "編集", edit_community_path(@community), class: "edit_button" %>
+              </div>
+          
+              <div class="button">
+                <%= link_to "削除", community_path(@community), method: :delete, class: "destroy_button" %>
+              </div>
+            </div>
+          </div>
+          <div class="content-body">
+            <%= safe_join(@community.body.split("\n"),tag(:br))%>    
+          </div>
+     </div>
+    </div>
+  </div>
+
+
+  <h2>コメント一覧</h2>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.content %> 
+      <%= link_to "削除", community_comment_path(@community,c), method: :delete %>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@community, @comment], local: true ) do |f| %>
+      <%= f.text_field :content %>
+
+      <br>
+      <%= f.submit 'コメントする' %>
+
+    <%end%>
+  <%end%>
+  
+</div>
+    
+　
+
+ <style>
+  .button {
+    text-align: right;
+
+  }
+
+  .card {
+    height: 300px;
+    border-radius: 10px;
+  }
+
+
+  .content-title {
+   
+  /* display:inline-block; */
+  font-size: 25px;
+  }
+
+ .image {
+   border-radius: 10px;
+ }
+
+ .col {
+   /* display:inline-block; */
+ }
+
+ .t-content {
+   border-bottom:solid 1px;
+  
+ }
+
+ .b-tto {
+   /* display:inline-block; */
+   /* padding-left:500px; */
+ }
+
+ .c-padding {
+   margin-top: 30px;
+ }
+
+ .content-body {
+   padding:10px;
+ }
+
+ 
+
+
+ </style>

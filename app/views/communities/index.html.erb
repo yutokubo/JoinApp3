@@ -1,0 +1,29 @@
+
+<div class="container">
+    <div class="row ">
+        <% @communities.each do |community| %>    
+          <div class="col aaa">
+            <%= link_to community_path(community) do %>
+                <div class="card shadow-sm" style="height:300px; width:15rem;">
+                 <div>
+                    <%= image_tag community.image.url, class:"card-img", style:"height: 10rem;" %>
+                  </div>
+                 
+                  <div class="card-body">
+                    <%= community.title %>
+                  </div>
+                  
+                </div>
+            <%end%>
+          </div>
+        <%end%>
+    </div>
+</div> 
+
+<style>
+.aaa {
+  margin-bottom:3rem;
+  position:relative;
+}
+ 
+</style>

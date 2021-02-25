@@ -1,0 +1,71 @@
+<h5>プロフィール編集</h5>
+  <div class= "container">
+    <div class="col">
+      <div class="card mb-4 " style="width: 25rem;">
+          <%= form_for @user do |f| %>
+              <div class="field">
+              <%= f.label  :username, "ユーザー名",class: "label" %>
+              <%= f.text_field :username, class: "form-control-md input", :style => "width: 20rem;"  %>
+              </div>
+
+              <div class="field">
+              <%= f.label :profile, "プロフィール", class: "label" %>
+              <%= f.text_area :profile, :wrap => "hard", class: "form-control-md textarea p-field", :style => "width: 20rem;" %>
+              </div>
+
+              
+              <div class="field">
+              <%= f.label :profile_image, "プロフィール画像", class: "label" %>
+              <%= f.file_field :profile_image, class: "form-control-md input" %>
+              </div>
+
+              <div class="field">
+              <%= f.submit "更新", class: " btn btn-primary btn-md f-post" %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<style>
+  .field {
+    padding-bottom: 30px;
+      
+  }
+
+  .card {
+   padding: 40px ;
+   height:500px; 
+   margin-left: 350px;
+
+  }
+
+ .f-post {
+   border-radius: 30px;
+   margin-left: 90px;
+   width: 150px;
+   margin-top: 40px;
+ }
+
+ h5 {
+   text-align:center;
+   padding-top: 50px;
+ }
+
+ .p-field {
+   height: 80px;
+ }
+
+</style>
+    
+
+
+
+
+
+    
+
+
+

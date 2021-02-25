@@ -1,0 +1,60 @@
+<div class = "container">
+      <div class = "col ">
+        <div class="card mb-4 " style="width: 40rem;">
+        <%= form_for @community do |f| %>
+            <div>
+                <%= f.label "タイトル:" %>
+                <%= f.text_field :title, class: "field a", :style => "width: 35rem;"  %>
+            </div>
+
+            <div>
+                <%= f.label "内容: " %>
+                <%= f.text_area :body, :wrap => "hard", class: "field b", :style => "width: 35rem;"%>
+            </div>
+
+            <div>
+                <%= f.label "イメージ画像" %>
+                <%= f.file_field :image, class: "field -c" %>
+            </div>
+
+            <div>
+                <%= f.submit '投稿', class:"btn btn-primary btn-lg s-post "%>
+            </div>
+        <%end%>
+        </div>
+      </div>
+</div> 
+
+<style>
+ .card {
+   padding: 40px;
+   height:500px; 
+   margin-left: 250px;
+ }
+
+ .field {
+   margin-bottom: 40px;
+  
+ }
+
+ .b {
+   height:150px;
+   
+
+ }
+
+ .s-post {
+   border-radius: 30px;
+   margin-left: 200px;
+   width: 150px;
+  
+
+ }
+
+ 
+
+
+
+ 
+
+</style>
